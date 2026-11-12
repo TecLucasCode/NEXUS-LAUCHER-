@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1622">
+<meta name="description" content="Star Launcher — meus jogos em um só lugar">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>NEXUS LAUNCHER</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#0e1622;color:#fff;font-family:"Courier New",monospace}
+body{background:linear-gradient(#1a2340,#0e1622 60%) fixed}
+.wrap{max-width:680px;margin:0 auto;padding:0 12px 48px}
+.hero{position:relative;border-radius:0 0 16px 16px;overflow:hidden;border:3px solid #ffd166;border-top:0;box-shadow:0 6px 30px rgba(255,209,102,.25)}
+.hero img{width:100%;height:210px;object-fit:cover;display:block}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(5,8,16,.88));display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.hero h1{margin:0;font-size:26px;color:#ffd166;text-shadow:0 3px 0 #5a3a0a;letter-spacing:1px}
+.hero small{color:#ffe9a8;font-size:12px}
+.topbar{display:flex;gap:8px;align-items:center;padding:10px 2px}
+.topbar .sp{flex:1}
+.card{background:linear-gradient(#22354f,#101a2e);border:3px solid #ffd166;border-radius:14px;overflow:hidden;margin:14px 0;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.card img{width:100%;display:block;background:#000;image-rendering:pixelated}
+.card .body{padding:12px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.tag{background:#0a0e1a;border:2px solid #4a5a8a;border-radius:20px;font-size:11px;padding:2px 9px;color:#9be8ff}
+.tag.gold{border-color:#ffd166;color:#ffd166}
+.btn{display:inline-block;background:linear-gradient(#ffdd7e,#e8a93e);border:3px solid #5a3a0a;color:#3a2400;font-weight:bold;border-radius:8px;padding:13px 26px;font-size:18px;text-decoration:none;box-shadow:0 4px 0 #5a3a0a;position:relative;overflow:hidden}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btnPlay{width:100%;text-align:center;font-size:20px;animation:glow 1.6s infinite}
+@keyframes glow{0%,100%{box-shadow:0 4px 0 #5a3a0a,0 0 10px rgba(255,209,102,.4)}50%{box-shadow:0 4px 0 #5a3a0a,0 0 26px rgba(255,225,94,.8)}}
+.btn.alt{background:linear-gradient(#3a5aa8,#2e4a8a);color:#fff;border-color:#9be8ff;font-size:13px;padding:9px 12px;box-shadow:0 3px 0 #0f3550}
+.row{display:flex;gap:8px;margin-top:8px}
+.row .btn.alt{flex:1;text-align:center}
+section{background:linear-gradient(#22354f,#141f36);border:3px solid #4a5a8a;border-radius:14px;padding:12px;margin:12px 0}
+section h3{margin:0 0 8px;color:#ffd166;font-size:15px;text-shadow:1px 1px 0 #000}
+#installBtn{display:none;width:100%;text-align:center}
+ol{margin:6px 0 0 18px;padding:0;font-size:13px;color:#cfe6ff;line-height:1.6}
+.newsItem{background:#0a1424;border:2px solid #4a5a8a;border-radius:8px;padding:8px;margin:6px 0;font-size:13px}
+.badge{display:inline-block;background:#2ec24f;color:#062e12;font-size:11px;font-weight:bold;border-radius:10px;padding:1px 8px;margin-left:6px}
+footer{color:#8a9ab8;font-size:12px;text-align:center;margin-top:18px}
+.feat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
+.feat div{background:#0a1424;border:2px solid #4a5a8a;border-radius:8px;padding:8px 4px;text-align:center;font-size:12px}
+.feat b{display:block;font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><img src="./hero.jpg" alt="Launcher"><div class="ov"><h1>NEXUS LAUNCHER</h1><small>Meus jogos · toque e jogue</small></div></div>
+<div class="topbar"><span class="tag gold">🎮 1 jogo</span><span class="sp"></span><span class="tag">🇧🇷 PT-BR</span></div>
+
+<div class="card">
+<img src="./game-cover.png" alt="Star Velocity - 32 corredoras te esperando">
+<div class="body">
+<div class="tags"><span class="tag gold">🏇 Corrida pixel art</span><span class="tag">📱 Mobile</span></div>
+<a class="btn btnPlay" id="playBtn" href="https://perchance.org/bowj37d3qz">▶ JOGAR AGORA</a>
+<div class="row"><button class="btn alt" id="copyBtn">📋 Copiar link</button><button class="btn alt" id="shareBtn">💬 Chamar amigo</button></div>
+<p style="margin:8px 0 0;font-size:12px;color:#9be8ff" id="lastPlayed"></p>
+</div>
+</div>
+
+<section>
+<h3>📱 Instalar como app</h3>
+<button class="btn" id="installBtn">⬇ Instalar app</button>
+<ol>
+<li><b>Android:</b> ⋮ → <b>Adicionar à tela inicial</b></li>
+<li><b>iPhone:</b> Compartilhar → <b>Adicionar à Tela de Início</b></li>
+</ol>
+</section>
+
+<section>
+<h3>📰 Novidades <span class="badge" id="newsBadge" hidden>NOVO</span></h3>
+<div id="news">Carregando...</div>
+</section>
+
+<section>
+<h3>❓ Ajuda rápida</h3>
+<p style="font-size:13px;color:#cfe6ff;margin:0">Precisa de internet. Crie uma <b>conta no jogo</b> (usuário + senha) pra não perder o progresso. Convidado perde se trocar de celular.</p>
+</section>
+
+<footer>NEXUS LAUNCHER · feita no GitHub Pages</footer>
+</div>
+
+<script>
+const GAME_URL = "https://perchance.org/bowj37d3qz";
+document.getElementById("playBtn").addEventListener("click", () => {
+  try { localStorage.setItem("launcher-last", JSON.stringify({at: Date.now()})); } catch(e){}
+});
+document.getElementById("copyBtn").onclick = async () => {
+  try { await navigator.clipboard.writeText(GAME_URL); alert("Link copiado!"); }
+  catch(e){ prompt("Copie o link:", GAME_URL); }
+};
+document.getElementById("shareBtn").onclick = async () => {
+  const txt = "🏇 Entra no Star Velocity comigo! " + GAME_URL;
+  try { await navigator.clipboard.writeText(txt); alert("Convite copiado! Manda no WhatsApp 📋"); }
+  catch(e){ prompt("Copie:", txt); }
+};
+try {
+  const last = JSON.parse(localStorage.getItem("launcher-last") || "null");
+  if (last && last.at) document.getElementById("lastPlayed").textContent = "Última vez jogada: " + new Date(last.at).toLocaleString();
+} catch(e){}
+let deferred = null;
+const installBtn = document.getElementById("installBtn");
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; installBtn.style.display = "inline-block"; });
+installBtn.onclick = async () => {
+  if (!deferred) { alert("Use o menu do navegador: Adicionar à tela inicial."); return; }
+  deferred.prompt(); await deferred.userChoice; deferred = null; installBtn.style.display = "none";
+};
+fetch("./novidades.json", {cache:"no-store"}).then(r=>r.json()).then(j=>{
+  const box = document.getElementById("news");
+  if (!j || !j.itens || !j.itens.length) { box.textContent = "Sem novidades por enquanto."; return; }
+  box.innerHTML = j.itens.map(n=>`<div class="newsItem"><b>${n.titulo}</b><br>${n.texto}</div>`).join("");
+  const seen = localStorage.getItem("launcher-news-seen");
+  if (seen !== String(j.versao)) { document.getElementById("newsBadge").hidden = false; localStorage.setItem("launcher-news-seen", String(j.versao)); }
+}).catch(()=>{ document.getElementById("news").textContent = "Sem novidades por enquanto."; });
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body>
+</html>
